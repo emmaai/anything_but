@@ -1,0 +1,23 @@
+juxtapose:
+  - transform: make_mask
+    input:
+      product: ls5_pq_albers
+      fuse_func: datacube.helpers.ga_pq_fuser
+    flags:
+      contiguous: True
+      cloud_acca: no_cloud
+      cloud_fmask: no_cloud
+      cloud_shadow_acca: no_cloud_shadow
+      cloud_shadow_fmask: no_cloud_shadow
+      blue_saturated: False
+      green_saturated: False
+      red_saturated: False
+      nir_saturated: False
+      swir1_saturated: False
+      swir2_saturated: False
+    mask_measurement_name: pixelquality
+  - product: ls5_nbart_albers
+    measurements: [blue, green, swir2]
+    source_filter:
+      product: ls5_level1_scene
+      gqa_iterative_mean_xy: [0, 1]
